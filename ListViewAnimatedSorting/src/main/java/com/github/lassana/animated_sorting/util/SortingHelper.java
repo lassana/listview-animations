@@ -23,10 +23,10 @@ public class SortingHelper {
 
     public SortingHelper(ListView listView) {
         this.mListView = listView;
-        saveState();
+        saveOldState();
     }
 
-    private void saveState() {
+    private void saveOldState() {
         mSavedState.clear();
         int first = mListView.getFirstVisiblePosition();
         int last = mListView.getLastVisiblePosition();
@@ -35,8 +35,7 @@ public class SortingHelper {
             if( i >= first && i <= last) {
                 View v = mListView.getChildAt(i-first);
                 Integer top = v.getTop();
-                int dataIdx = i;
-                Object dataId = adapter.getItem(dataIdx);
+                Object dataId = adapter.getItem(i);
                 mSavedState.put(dataId, top);
             } else if( i < first ) {
                 Integer top = mListView.getTop() - mListView.getHeight()/2;
