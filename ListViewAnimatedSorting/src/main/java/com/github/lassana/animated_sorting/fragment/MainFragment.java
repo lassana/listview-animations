@@ -1,5 +1,7 @@
 package com.github.lassana.animated_sorting.fragment;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -9,7 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.github.lassana.animated_sorting.R;
 import com.github.lassana.animated_sorting.util.SortingHelper;
@@ -48,14 +52,8 @@ public class MainFragment extends ListFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ListView listView = getListView();
-        listView.setAdapter(getNextAdapter());
-    }
-
-    private ArrayAdapter<String> getNextAdapter() {
-        ArrayList<String> carsArrayList = new ArrayList<String>(Arrays.asList(CARS));
-        Collections.shuffle(carsArrayList);
-        return new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, carsArrayList);
+        listView.setAdapter(new EasyAdapter(
+                new ArrayList<String>(Arrays.asList(CARS)), getActivity()));
     }
 
     @Override
@@ -72,8 +70,52 @@ public class MainFragment extends ListFragment {
     private void shuffleListView() {
         ListView listView = getListView();
         SortingHelper sortingHelper = new SortingHelper(listView);
-        listView.setAdapter(getNextAdapter());
+        ((EasyAdapter)listView.getAdapter()).shuffle();
         sortingHelper.animateNewState();
+    }
 
+    private static class EasyAdapter extends BaseAdapter {
+
+        private ArrayList<String> mDataSet;
+        private Context mContext;
+
+        public EasyAdapter(ArrayList<String> dataSet, Context context) {
+            this.mDataSet = dataSet;
+            this.mContext = context;
+        }
+
+        @Override
+        public int getCount() {
+            return mDataSet.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return mDataSet.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View v = convertView;
+            if( v == null ) {
+                LayoutInflater inflater = LayoutInflater.from(mContext);
+                v = inflater.inflate(android.R.layout.simple_list_item_1, null);
+            }
+            TextView tv = (TextView) v.findViewById(android.R.id.text1);
+            tv.setText(mDataSet.get(position));
+            tv.setTextColor(Color.MAGENTA);
+            tv.setBackgroundColor(Color.LTGRAY);
+            return v;
+        }
+
+
+        public void shuffle() {
+            Collections.shuffle(mDataSet);
+        }
     }
 }
