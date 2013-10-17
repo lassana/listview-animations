@@ -1,5 +1,6 @@
 package com.github.lassana.animated_sorting.util;
 
+import android.content.res.Resources;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
@@ -15,7 +16,7 @@ import java.util.HashMap;
  */
 public class SortingHelper<AdapterItem> {
 
-    public static final int DURATION_MILLIS = 333;
+    private static final int DURATION_NON_SYSTEM_VALUE = 333;
     private final ListView mListView;
 
     private HashMap<AdapterItem, Integer> mSavedState = new HashMap<AdapterItem, Integer>();
@@ -56,7 +57,18 @@ public class SortingHelper<AdapterItem> {
         }
     }
 
+    public static int getDefaulAnimationDuration() {
+        Resources res = Resources.getSystem();
+        return  res == null
+                ? DURATION_NON_SYSTEM_VALUE
+                : res.getInteger(android.R.integer.config_mediumAnimTime);
+    }
+
     public void animateNewState() {
+        animateNewState(getDefaulAnimationDuration());
+    }
+
+    public void animateNewState(int animationTime) {
         int first = mListView.getFirstVisiblePosition();
         int last = mListView.getLastVisiblePosition();
         BaseAdapter adapter = (BaseAdapter) mListView.getAdapter();
@@ -70,7 +82,7 @@ public class SortingHelper<AdapterItem> {
                 int hDiff = top - oldTop;
                 TranslateAnimation anim = new TranslateAnimation(0, 0, -hDiff, 0);
                 anim.setInterpolator(mInterpolator);
-                anim.setDuration(DURATION_MILLIS);
+                anim.setDuration(animationTime);
                 v.startAnimation(anim);
             }
         }
