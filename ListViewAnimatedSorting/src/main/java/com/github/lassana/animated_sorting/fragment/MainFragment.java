@@ -64,9 +64,12 @@ public class MainFragment extends ListFragment {
 
     private void shuffleListView() {
         ListView listView = getListView();
-        SortingHelper sortingHelper = new SortingHelper(listView);
+        SortingHelper<String> sortingHelper = new SortingHelper<String>(listView);
         ((EasyAdapter)listView.getAdapter()).shuffle();
         sortingHelper.animateNewState();
+        //SortingHelper sortingHelper = new SortingHelper(listView);
+        //((EasyAdapter)listView.getAdapter()).shuffle();
+        //sortingHelper.animateNewState();
     }
 
 }
