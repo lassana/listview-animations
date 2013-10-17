@@ -57,7 +57,7 @@ public class SortingHelper<AdapterItem> {
         }
     }
 
-    public static int getDefaulAnimationDuration() {
+    public static int getDefaultAnimationTime() {
         Resources res = Resources.getSystem();
         return  res == null
                 ? DURATION_NON_SYSTEM_VALUE
@@ -65,7 +65,7 @@ public class SortingHelper<AdapterItem> {
     }
 
     public void animateNewState() {
-        animateNewState(getDefaulAnimationDuration());
+        animateNewState(getDefaultAnimationTime());
     }
 
     public void animateNewState(int animationTime) {
