@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ListView Animations</string>
+    <string name="action_shuffle">Shuffle</string>
+    <string name="scrolling">Scrolling</string>
+    <string name="sorting">Sorting</string>
+
+</resources>
