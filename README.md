@@ -1,7 +1,10 @@
-ListView: animated sorting
+## ListView animations
 
-Lttle project showing how to implement animated sorting for listview.
+---
 
-Main class : [SortingHelper](ListViewAnimatedSorting/src/main/java/com/github/lassana/animated_sorting/util/SortingHelper.java)
+Little project showing how to implement `ListView` animations.
 
-Sample: [Tag with APK](https://github.com/lassana/listview-anim-sorting/releases/tag/v0.2)
+* [Sorting](app/src/main/java/com.github.lassana/animations/sorting)
+* [Scrolling](app/src/main/java/com.github.lassana/animations/scrolling)
+
+Sample: [Tag with APK](https://github.com/lassana/listview-anim-sorting/releases/tag/v0.3)
