@@ -16,15 +16,6 @@ public class ExpandAnimation extends Animation {
     private final int mEndHeight;
     private final boolean mExpand;
 
-    /**
-     * Initializes expand collapse animation, has two types, collapse and expand.
-     *
-     * @param view     The view to animate
-     * @param duration Animation duration
-     * @param isExpand The type of animation: true will expand from gone and 0 size
-     *                 to visible and layout size defined in xml.
-     *                 False will collapse view and set to gone
-     */
     public ExpandAnimation(final View view, final int duration, final boolean isExpand) {
         assert view != null;
         setDuration(duration);

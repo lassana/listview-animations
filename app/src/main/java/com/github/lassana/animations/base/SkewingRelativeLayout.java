@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.RelativeLayout;
 
 /**
@@ -41,6 +40,7 @@ public class SkewingRelativeLayout extends RelativeLayout {
 
     public void setSkewY(float skewY) {
         this.skewY = skewY;
+        ViewCompat.postInvalidateOnAnimation(this);
     }
 
     public void setSkewX(float skewX) {
@@ -59,5 +59,6 @@ public class SkewingRelativeLayout extends RelativeLayout {
     public void setSkews(float skewX, float skewY) {
         this.skewX = skewX;
         this.skewY = skewY;
+        ViewCompat.postInvalidateOnAnimation(this);
     }
 }

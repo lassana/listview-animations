@@ -1,7 +1,6 @@
 package com.github.lassana.animations.expand.animator;
 
 import android.util.Log;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
@@ -53,7 +52,6 @@ public class SkewAnimation extends Animation {
             } else {
                 skewY = mStartSkewY - interpolatedTime * Math.abs(mFinishSkewY - mStartSkewY);
             }
-            Log.v("applyTransformation", "setSkews: skewX: " + skewX + "; skewY: " + skewY);
             mAnimatedView.setSkews(skewX, skewY);
         } else {
             mAnimatedView.setSkews(mFinishSkewX, mFinishSkewY);

@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 
 import com.github.lassana.animations.base.DatasetBuilder;
 import com.github.lassana.animations.R;
-import com.github.lassana.animations.expand.adapter.ExpandAdapter;
+import com.github.lassana.animations.expand.adapter.ExpandSkewAdapter;
 import com.github.lassana.animations.expand.model.ListItemData;
+
+import java.util.List;
 
 /**
  * @author lassana
@@ -26,6 +28,7 @@ public class ExpandFragment extends ListFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getListView().setSelector(android.R.color.transparent);
-        setListAdapter(new ExpandAdapter(getActivity(), ListItemData.build(DatasetBuilder.buildLarge())));
+        List<String> strings = DatasetBuilder.buildLarge();
+        setListAdapter(new ExpandSkewAdapter(getActivity(), ListItemData.build(strings)));
     }
 }
