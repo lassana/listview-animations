@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.github.lassana.animations.R;
 import com.github.lassana.animations.scrolling.animator.Animate;
 import com.github.lassana.animations.scrolling.animator.AnimatorHelper;
-import com.github.lassana.animations.scrolling.animator.Skew;
+import com.github.lassana.animations.scrolling.view.SkewingRelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +99,7 @@ public class AnimatedArrayAdapter extends BaseAdapter
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void animatePostIcs(int position, View view) {
-        float startSkewX = 0.95f;
+        float startSkewX = 0.5f;
         float translationX;
         float translationY;
 
@@ -111,7 +111,7 @@ public class AnimatedArrayAdapter extends BaseAdapter
             translationY = -mAnimY;
         }
 
-        ObjectAnimator skewAnimator = ObjectAnimator.ofFloat(view, "mSkewX", startSkewX, 0f);
+        ObjectAnimator skewAnimator = ObjectAnimator.ofFloat(view, "skewX", startSkewX, 0f);
         ObjectAnimator translationXAnimator = ObjectAnimator.ofFloat(view, View.TRANSLATION_X, translationX, 0f);
         ObjectAnimator translationYAnimator = ObjectAnimator.ofFloat(view, View.TRANSLATION_Y, translationY, 0f);
 
@@ -138,7 +138,7 @@ public class AnimatedArrayAdapter extends BaseAdapter
 
         public AnimatorWithLayerListener(View view) {
             mView = view;
-            mIsSkew = view instanceof Skew;
+            mIsSkew = view instanceof SkewingRelativeLayout;
         }
 
         @Override
@@ -160,7 +160,7 @@ public class AnimatedArrayAdapter extends BaseAdapter
             mView.setTranslationX(0f);
             mView.setTranslationY(0f);
             if (mIsSkew) {
-                ((Skew) mView).setSkewX(0f);
+                ((SkewingRelativeLayout) mView).setSkewX(0f);
             }
 
         }

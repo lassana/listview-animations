@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.github.lassana.animations"
-          android:versionCode="1"
-          android:versionName="1.0">
+          package="com.github.lassana.animations">
 
     <application
         android:allowBackup="true"
@@ -19,11 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".sorting.activity.SortingActivity"
-            android:label="@string/sorting"/>
-        <activity
-            android:name=".scrolling.activity.ScrollingActivity"
-            android:label="@string/scrolling"/>
+            android:name=".ListFragmentActivity"/>
     </application>
 
 </manifest>

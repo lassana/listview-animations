@@ -11,7 +11,7 @@ import android.widget.AbsListView;
 public class AnimateScrollListener implements AbsListView.OnScrollListener {
 
     private static final String TAG = "AnimateScrollListener";
-    public static final int MAX_PERMITTED_SPEED = 24;
+    public static final int MAX_PERMITTED_SPEED = 32;
     private Animate mAnimate;
 
     private int mScrollState;
@@ -37,7 +37,7 @@ public class AnimateScrollListener implements AbsListView.OnScrollListener {
             long timeToScrollOneElement = currentTime - mPreviousEventTime;
             double speed = (1d / timeToScrollOneElement) * 1000;
 
-            Log.d(TAG, "speed: " + speed);
+            //Log.d(TAG, "speed: " + speed);
 
             mPreviousFirstVisibleItem = firstVisibleItem;
             mPreviousEventTime = currentTime;

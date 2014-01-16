@@ -5,12 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@android:id/text1"
-        android:minHeight="48dp"
-        style="?attr/textAppearanceListItem"
-        android:gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <include
+        layout="@android:layout/simple_list_item_1"/>
+
 
 </com.github.lassana.animations.scrolling.view.SkewingRelativeLayout>

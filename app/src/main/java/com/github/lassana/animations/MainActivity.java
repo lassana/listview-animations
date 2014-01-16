@@ -1,13 +1,13 @@
 package com.github.lassana.animations;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Pair;
 import android.view.View;
 
-import com.github.lassana.animations.scrolling.activity.ScrollingActivity;
-import com.github.lassana.animations.sorting.activity.SortingActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author lassana
@@ -15,25 +15,30 @@ import com.github.lassana.animations.sorting.activity.SortingActivity;
  */
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
+    private List<Pair<Integer, Integer>> mButtonsList;
+
+    {
+        mButtonsList = new ArrayList<>();
+        mButtonsList.add(new Pair<>(R.id.buttonSorting, ListFragmentActivity.FRAGMENT_LIST_SORTING));
+        mButtonsList.add(new Pair<>(R.id.buttonScrolling, ListFragmentActivity.FRAGMENT_LIST_SCROLLING));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.buttonSorting).setOnClickListener(this);
-        findViewById(R.id.buttonScrolling).setOnClickListener(this);
+
+        for (Pair<Integer, Integer> pair : mButtonsList) {
+            View view = findViewById(pair.first);
+            view.setTag(pair.second);
+            view.setOnClickListener(this);
+        }
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.buttonSorting:
-                startActivity(new Intent(this, SortingActivity.class));
-                break;
-            case R.id.buttonScrolling:
-                startActivity(new Intent(this, ScrollingActivity.class));
-                break;
-            default:
-                break;
-        }
+        int fragmentId = (int) v.getTag();
+        startActivity(new Intent(this, ListFragmentActivity.class)
+                .putExtra(ListFragmentActivity.EXTRA_FRAGMENT_ID, fragmentId));
     }
 }
