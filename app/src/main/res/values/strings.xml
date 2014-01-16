@@ -6,5 +6,13 @@
     <string name="scrolling">Scrolling</string>
     <string name="sorting">Sorting</string>
     <string name="expand">Expand item</string>
+    <string name="tv_description">An automobile, autocar, motor car or car is a wheeled motor vehicle used for transporting passengers, which also carries its own engine or motor. Most definitions of the term specify that automobiles are designed to run primarily on roads, to have seating for one to eight people, to typically have four wheels, and to be constructed principally for the transport of people rather than goods.[3]
+
+The year 1886 is regarded the year of birth of the modern automobile - with the Benz Patent-Motorwagen, by German inventor Karl Benz. Motorized wagons soon replaced animal-drafted carriages, especially after automobiles became affordable for many people when the Ford Model T was introduced in 1908.
+
+The term motorcar has formerly also been used in the context of electrified rail systems to denote a car which functions as a small locomotive but also provides space for passengers and baggage. These locomotive cars were often used on suburban routes by both interurban and intercity railroad systems.[4]
+
+It was estimated in 2010 that the number of automobiles had risen to over 1 billion vehicles, up from the 500 million of 1986.[5] The numbers are increasing rapidly, especially in China, India and other NICs.[6]</string>
+    <string name="tv_title">Title</string>
 
 </resources>

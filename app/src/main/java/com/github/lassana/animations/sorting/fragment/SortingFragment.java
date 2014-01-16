@@ -10,21 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.github.lassana.animations.base.DatasetBuilder;
 import com.github.lassana.animations.R;
 import com.github.lassana.animations.sorting.adapter.EasyAdapter;
 import com.github.lassana.animations.sorting.util.SortingHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * @author lassana
  * @since 10/8/13
  */
 public class SortingFragment extends ListFragment {
-
-    private final static String[] CARS = { "Volvo", "Mercedes", "Audi", "Land Rover", "BMW", "Ford",
-            "GMC", "Mazda", "Acura", "Vaz", "Renault"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +45,7 @@ public class SortingFragment extends ListFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ListView listView = getListView();
         listView.setAdapter(new EasyAdapter(
-                new ArrayList<String>(Arrays.asList(CARS)), getActivity()));
+                new ArrayList<String>(DatasetBuilder.build()), getActivity()));
     }
 
     @Override

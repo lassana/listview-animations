@@ -14,9 +14,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.github.lassana.animations.R;
+import com.github.lassana.animations.base.AnimatorHelper;
 import com.github.lassana.animations.scrolling.animator.Animate;
-import com.github.lassana.animations.scrolling.animator.AnimatorHelper;
-import com.github.lassana.animations.scrolling.view.SkewingRelativeLayout;
+import com.github.lassana.animations.base.SkewingRelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
