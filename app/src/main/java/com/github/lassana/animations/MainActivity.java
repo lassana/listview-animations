@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +23,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     {
         mButtonsList = new ArrayList<>();
-        mButtonsList.add(new Pair<>(R.id.buttonSorting, ListFragmentActivity.FRAGMENT_LIST_SORTING));
-        mButtonsList.add(new Pair<>(R.id.buttonScrolling, ListFragmentActivity.FRAGMENT_LIST_SCROLLING));
+        mButtonsList.add(new Pair<>(ListFragmentActivity.FRAGMENT_LIST_SORTING, R.string.sorting));
+        mButtonsList.add(new Pair<>(ListFragmentActivity.FRAGMENT_LIST_SCROLLING, R.string.scrolling));
+        mButtonsList.add(new Pair<>(ListFragmentActivity.FRAGMENT_EXPAND_LIST_ITEM, R.string.expand));
     }
 
     @Override
@@ -28,10 +33,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        LinearLayout layout = (LinearLayout) findViewById(android.R.id.primary);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.gravity = Gravity.CENTER;
         for (Pair<Integer, Integer> pair : mButtonsList) {
-            View view = findViewById(pair.first);
-            view.setTag(pair.second);
-            view.setOnClickListener(this);
+            Button button = new Button(this);
+            button.setLayoutParams(params);
+            button.setTag(pair.first);
+            button.setText(pair.second);
+            button.setOnClickListener(this);
+            layout.addView(button);
         }
     }
 

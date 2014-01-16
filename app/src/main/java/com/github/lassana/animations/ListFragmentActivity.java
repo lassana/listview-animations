@@ -38,6 +38,7 @@ public class ListFragmentActivity extends ActionBarActivity {
                 case FRAGMENT_EXPAND_LIST_ITEM:
                     fragment = new ExpandFragment();
                     titleResId = R.string.expand;
+                    break;
                 default:
                     throw new IllegalStateException("Intent has no EXTRA_FRAGMENT_ID");
             }
