@@ -39,6 +39,7 @@ public class ExpandAdapter extends ArrayAdapter<ListItemData> {
 
     class ViewHolder {
         TextView title;
+        TextView description;
         SkewingRelativeLayout contentLayout;
     }
 
@@ -49,11 +50,13 @@ public class ExpandAdapter extends ArrayAdapter<ListItemData> {
             convertView = mLayoutInflater.inflate(R.layout.list_item_expand, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.title = (TextView) convertView.findViewById(android.R.id.text1);
+            viewHolder.description = (TextView) convertView.findViewById(android.R.id.text2);
             viewHolder.contentLayout = (SkewingRelativeLayout) convertView.findViewById(android.R.id.content);
             convertView.setTag(viewHolder);
         }
         ListItemData item = getItem(position);
         viewHolder.title.setText(item.getTitle());
+        viewHolder.description.setText(R.string.tv_description);
         viewHolder.contentLayout.setVisibility(item.isExpanded() ? View.VISIBLE : View.GONE);
         final SkewingRelativeLayout content = viewHolder.contentLayout;
         viewHolder.title.setOnClickListener(new View.OnClickListener() {
