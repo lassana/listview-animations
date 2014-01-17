@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import com.github.lassana.animations.expand.fragment.ExpandFragment;
 import com.github.lassana.animations.scrolling.fragment.ScrollingFragment;
 import com.github.lassana.animations.sorting.fragment.SortingFragment;
+import com.github.lassana.animations.twolists.fragment.TwoListFragment;
 
 /**
  * @author lassana
@@ -18,6 +19,7 @@ public class ListFragmentActivity extends ActionBarActivity {
     public static final int FRAGMENT_LIST_SORTING = 1;
     public static final int FRAGMENT_LIST_SCROLLING = 2;
     public static final int FRAGMENT_EXPAND_LIST_ITEM = 3;
+    public static final int FRAGMENT_TWO_LISTS = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,10 @@ public class ListFragmentActivity extends ActionBarActivity {
                 case FRAGMENT_EXPAND_LIST_ITEM:
                     fragment = new ExpandFragment();
                     titleResId = R.string.expand;
+                    break;
+                case FRAGMENT_TWO_LISTS:
+                    fragment = new TwoListFragment();
+                    titleResId = R.string.two_lists;
                     break;
                 default:
                     throw new IllegalStateException("Intent has no EXTRA_FRAGMENT_ID");

@@ -26,6 +26,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         mButtonsList.add(new Pair<>(ListFragmentActivity.FRAGMENT_LIST_SORTING, R.string.sorting));
         mButtonsList.add(new Pair<>(ListFragmentActivity.FRAGMENT_LIST_SCROLLING, R.string.scrolling));
         mButtonsList.add(new Pair<>(ListFragmentActivity.FRAGMENT_EXPAND_LIST_ITEM, R.string.expand));
+        mButtonsList.add(new Pair<>(ListFragmentActivity.FRAGMENT_TWO_LISTS, R.string.two_lists));
     }
 
     @Override
