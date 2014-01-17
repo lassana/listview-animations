@@ -27,8 +27,13 @@ public abstract class DatasetBuilder {
     }
 
     public static List<String> buildLarge() {
+        return buildLarge(50);
+    }
+
+
+    public static List<String> buildLarge(int size) {
         ArrayList<String> arrayList = new ArrayList<>();
-        for (int i = 0; i < 50; i++) Collections.addAll(arrayList, CARS);
+        for (int i = 0; i < size-1; i++) Collections.addAll(arrayList, CARS);
         Collections.shuffle(arrayList);
         return arrayList;
     }
