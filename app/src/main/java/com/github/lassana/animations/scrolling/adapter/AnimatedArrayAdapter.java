@@ -2,7 +2,6 @@ package com.github.lassana.animations.scrolling.adapter;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
@@ -14,9 +13,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.github.lassana.animations.R;
-import com.github.lassana.animations.base.AnimatorHelper;
 import com.github.lassana.animations.scrolling.animator.Animate;
 import com.github.lassana.animations.base.SkewingRelativeLayout;
+import com.github.lassana.animations.scrolling.animator.ListItemAnimatorSetBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,15 +29,12 @@ public class AnimatedArrayAdapter extends BaseAdapter
 
     public static final boolean IS_POST_ICS_ANIMATION_ENABLED
             = Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH;
+
     private final LayoutInflater mLayoutInflater;
     private final List<String> mStringList;
 
     private int mPreviousPosition = -1;
-
     private ArrayList<Animator> mAnimatorList = new ArrayList<>();
-
-    private final float mAnimX = 140;
-    private final float mAnimY = 140;
     private boolean mAnimate;
 
     public AnimatedArrayAdapter(Context context, List<String> list) {
@@ -91,37 +87,20 @@ public class AnimatedArrayAdapter extends BaseAdapter
         }
         viewHolder.title.setText((String) getItem(position));
         if (IS_POST_ICS_ANIMATION_ENABLED && mAnimate) {
-            animatePostIcs(position, convertView);
+            animatePostIcs(position, convertView, viewHolder);
         }
         mPreviousPosition = position;
         return convertView;
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    private void animatePostIcs(int position, View view) {
-        float startSkewX = 0.5f;
-        float translationX;
-        float translationY;
-
-        if (mPreviousPosition < position) {
-            translationX = mAnimX;
-            translationY = mAnimY;
-        } else {
-            translationX = -mAnimX;
-            translationY = -mAnimY;
-        }
-
-        ObjectAnimator skewAnimator = ObjectAnimator.ofFloat(view, "skewX", startSkewX, 0f);
-        ObjectAnimator translationXAnimator = ObjectAnimator.ofFloat(view, View.TRANSLATION_X, translationX, 0f);
-        ObjectAnimator translationYAnimator = ObjectAnimator.ofFloat(view, View.TRANSLATION_Y, translationY, 0f);
-
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(skewAnimator, translationXAnimator, translationYAnimator);
-        animatorSet.setDuration(AnimatorHelper.DURATION_LONG);
+    private void animatePostIcs(int position, View view, ViewHolder viewHolder) {
+        AnimatorSet animatorSet = new ListItemAnimatorSetBuilder()
+                .addSkewAnimator(view)
+                .addTranslateAnimator(view, position, mPreviousPosition)
+                .build();
         animatorSet.addListener(new AnimatorWithLayerListener(view));
-
         mAnimatorList.add(animatorSet);
-
         animatorSet.start();
     }
 
