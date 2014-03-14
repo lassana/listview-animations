@@ -12,7 +12,7 @@ import com.github.lassana.animations.expand.model.ListItemData;
 import java.util.List;
 
 /**
- * @author Nikolai Doronin
+ * @author lassana
  * @since 1/16/14
  */
 public class ExpandSkewAdapter extends ExpandAdapter {

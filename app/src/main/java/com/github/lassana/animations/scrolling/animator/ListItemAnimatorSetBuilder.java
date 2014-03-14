@@ -5,7 +5,6 @@ import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
-import android.graphics.Color;
 import android.os.Build;
 import android.util.Property;
 import android.view.View;

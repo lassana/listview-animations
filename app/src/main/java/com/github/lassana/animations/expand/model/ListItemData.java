@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Nikolai Doronin
+ * @author lassana
  * @since 1/16/14
  */
 public class ListItemData {

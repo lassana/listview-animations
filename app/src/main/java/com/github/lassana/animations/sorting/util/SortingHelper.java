@@ -19,7 +19,7 @@ public class SortingHelper<AdapterItem> {
     private static final int DURATION_NON_SYSTEM_VALUE = 333;
     private final ListView mListView;
 
-    private HashMap<AdapterItem, Integer> mSavedState = new HashMap<AdapterItem, Integer>();
+    private HashMap<AdapterItem, Integer> mSavedState = new HashMap<>();
     private Interpolator mInterpolator = new DecelerateInterpolator();
 
     public SortingHelper(ListView listView) {

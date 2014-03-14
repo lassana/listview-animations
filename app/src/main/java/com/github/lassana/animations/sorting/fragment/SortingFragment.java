@@ -1,15 +1,13 @@
 package com.github.lassana.animations.sorting.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.github.lassana.animations.base.BaseListFragment;
 import com.github.lassana.animations.base.DatasetBuilder;
 import com.github.lassana.animations.R;
 import com.github.lassana.animations.sorting.adapter.EasyAdapter;
@@ -21,18 +19,12 @@ import java.util.ArrayList;
  * @author lassana
  * @since 10/8/13
  */
-public class SortingFragment extends ListFragment {
+public class SortingFragment extends BaseListFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_list, container, false);
     }
 
     @Override
@@ -44,8 +36,7 @@ public class SortingFragment extends ListFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ListView listView = getListView();
-        listView.setAdapter(new EasyAdapter(
-                new ArrayList<String>(DatasetBuilder.build()), getActivity()));
+        listView.setAdapter(new EasyAdapter(new ArrayList<>(DatasetBuilder.build()), getActivity()));
     }
 
     @Override
@@ -61,7 +52,7 @@ public class SortingFragment extends ListFragment {
 
     private void shuffleListView() {
         ListView listView = getListView();
-        SortingHelper<String> sortingHelper = new SortingHelper<String>(listView);
+        SortingHelper<String> sortingHelper = new SortingHelper<>(listView);
         ((EasyAdapter)listView.getAdapter()).shuffle();
         sortingHelper.animateNewState();
     }

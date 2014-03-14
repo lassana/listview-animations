@@ -1,7 +1,5 @@
 package com.github.lassana.animations.base;
 
-import android.content.res.Resources;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,9 +12,8 @@ import java.util.List;
 public abstract class DatasetBuilder {
 
     private final static String[] CARS = {
-            "Volvo", "Mercedes", "Audi", "Land Rover", "BMW", "Ford", "GMC", "Mazda", "Acura",
-            "Vaz", "Renault", "DeLorean", "Alfa Romeo", "Toyota", "Saab", "Ferrari", "Tesla"
-    };
+            "Volvo", "Mercedes", "Audi", "Land Rover", "BMW", "Ford", "GMC", "Mazda", "Acura", "Vaz", "Renault",
+            "DeLorean", "Alfa Romeo", "Toyota", "Saab", "Ferrari", "Tesla"};
 
 
     private DatasetBuilder() {
@@ -29,7 +26,6 @@ public abstract class DatasetBuilder {
     public static List<String> buildLarge() {
         return buildLarge(50);
     }
-
 
     public static List<String> buildLarge(int size) {
         ArrayList<String> arrayList = new ArrayList<>();

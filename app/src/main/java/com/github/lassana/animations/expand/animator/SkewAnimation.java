@@ -1,6 +1,5 @@
 package com.github.lassana.animations.expand.animator;
 
-import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
@@ -8,7 +7,7 @@ import com.github.lassana.animations.base.AnimatorHelper;
 import com.github.lassana.animations.base.SkewingRelativeLayout;
 
 /**
- * @author Nikolai Doronin
+ * @author lassana
  * @since 1/16/14
  */
 public class SkewAnimation extends Animation {

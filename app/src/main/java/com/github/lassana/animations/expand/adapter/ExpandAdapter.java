@@ -1,8 +1,6 @@
 package com.github.lassana.animations.expand.adapter;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,7 @@ import com.github.lassana.animations.expand.model.ListItemData;
 import java.util.List;
 
 /**
- * @author Nikolai Doronin
+ * @author lassana
  * @since 1/16/14
  */
 public abstract class ExpandAdapter extends ArrayAdapter<ListItemData> {
@@ -84,7 +82,6 @@ public abstract class ExpandAdapter extends ArrayAdapter<ListItemData> {
         content.startAnimation(set);
     }
 
-    protected abstract Animation[] getAdditionalAnimations(ViewGroup content,
-                                                           boolean isExpand);
+    protected abstract Animation[] getAdditionalAnimations(ViewGroup content, boolean isExpand);
 
 }

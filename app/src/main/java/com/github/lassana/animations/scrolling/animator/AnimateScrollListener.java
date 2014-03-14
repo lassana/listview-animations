@@ -26,8 +26,7 @@ public class AnimateScrollListener implements AbsListView.OnScrollListener {
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         mScrollState = scrollState;
-        mAnimate.setAnimate(scrollState == SCROLL_STATE_FLING
-                || scrollState == SCROLL_STATE_TOUCH_SCROLL);
+        mAnimate.setAnimate(scrollState == SCROLL_STATE_FLING || scrollState == SCROLL_STATE_TOUCH_SCROLL);
     }
 
     @Override
